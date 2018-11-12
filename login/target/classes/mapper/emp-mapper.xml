@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.dao.idao.EmpDao">
+    <!-- 查询单条记录 -->
+    <sql id="empColumns">empno,ename,job,hiredate,mgr,sal,comm,deptno</sql>
+    <insert id="save" parameterType="EmpPOJO" useGeneratedKeys="true" keyProperty="empno">
+        insert into tb_emp(ename,job,hiredate,mgr,sal,comm,deptno)value(#{ename},#{job},#{hiredate},#{mgr},#{sal},#{comm},#{deptno})
+    </insert>
+    <update id="update" parameterType="EmpPOJO">
+        update tb_emp set #{ename},#{job},#{hiredate},#{mgr},#{sal},#{comm},#{deptno} where empno=#{empno}
+    </update>
+    <delete id="delete" parameterType="EmpPOJO">
+        delete from tb_emp where empno=#{empno}
+    </delete>
+    <select id="findAll" resultType="EmpPOJO">
+        select
+        <include refid="empColumns"/>
+        from tb_emp
+    </select>
+    <select id="findByPage" parameterType="PageVOPOJO" resultType="EmpPOJO">
+        select
+        <include refid="empColumns"/>
+        from tb_emp limit #{page},#{size}
+    </select>
+    <select id="findById" parameterType="Integer" resultType="EmpPOJO">
+        select
+        <include refid="empColumns"/>
+        from tb_emp where empno=#{empno}
+    </select>
+    <select id="findByName" parameterType="String" resultType="EmpPOJO">
+        select
+        <include refid="empColumns"/>
+        from tb_emp where ename like concat('%',#{ename},'%')
+    </select>
+
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.dao.idao.ProductDao">
+    <sql id="productColumns">pid,pname,price,store</sql>
+    <select id="getTotalNums" resultType="Double">
+        select count(*) from tb_product
+    </select>
+    <select id="findByPage" parameterType="PageVOPOJO" resultType="ProductPOJO">
+        select <include refid="productColumns"/> from tb_product limit #{page},#{size}
+    </select>
+</mapper>

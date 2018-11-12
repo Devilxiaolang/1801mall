@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置mybatis性能 -->
+    <settings>
+        <setting name="cacheEnabled" value="true"/><!-- 是否缓存 -->
+        <setting name="defaultStatementTimeout" value="3000"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="useGeneratedKeys" value="true"/><!-- 是否设置主键自增 -->
+    </settings>
+    <!-- 别名 -->
+    <typeAliases>
+        <typeAlias type="com.company.dao.pojo.User" alias="UserPOJO"></typeAlias>
+        <typeAlias type="com.company.service.dto.PageVo" alias="PageVOPOJO"></typeAlias>
+        <typeAlias type="com.company.service.dto.Loginvo" alias="LoginVOPOJO"></typeAlias>
+        <typeAlias type="com.company.dao.pojo.Emp" alias="EmpPOJO"></typeAlias>
+        <typeAlias type="com.company.dao.pojo.Product" alias="ProductPOJO"></typeAlias>
+    </typeAliases>
+
+</configuration>
